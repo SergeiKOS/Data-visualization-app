@@ -8,8 +8,7 @@ import styles from "./DatePicker.module.css";
 function PickDate({ userTimeInput, onDateChange }) {
   return (
     <div>
-      {" "}
-      Enter date:{" "}
+      Enter date:
       <DatePicker
         className={styles.input}
         selected={userTimeInput}

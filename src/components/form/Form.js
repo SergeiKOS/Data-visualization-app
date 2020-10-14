@@ -6,7 +6,7 @@ import PickDate from "../datePicker/DatePicker";
 function Form({ onDataChange, onSubmit, userTimeInput, onDateChange, color }) {
   return (
     <form onSubmit={onSubmit} autoComplete="off">
-      <label htmlFor="data">Enter your data: </label>
+      <label htmlFor="data">Enter the number: </label>
       <input
         className={styles.input}
         type="number"

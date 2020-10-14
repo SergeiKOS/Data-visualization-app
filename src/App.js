@@ -116,8 +116,8 @@ function App() {
   return (
     <div className="App">
       <div className={styles.rules}>
-        Fill your data (e.x. weight) and pick a date. Chart will be saved in
-        your browser.
+        Graphics to track changes in data (weight, calories, height, etc). Chart
+        will be saved in your browser.
       </div>
       <div className={styles.formColorPickerWrapper}>
         <Form
