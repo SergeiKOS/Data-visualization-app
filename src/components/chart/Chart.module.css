@@ -1,10 +1,5 @@
 .chartWrapper {
-  position: relative;
-  
-  
+  margin-left: auto;
+  margin-right: auto;
+  width: 85vw;
 }
-/* 
-.chart {
-  width: calc(100vw - 20px);
-  height: 10vh;
-} */

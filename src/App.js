@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
+import styles from "./App.module.css";
+import { GithubPicker } from "react-color";
 import Form from "./components/form/Form";
 import Chart from "./components/chart/Chart";
-import { returnData, returnDate } from "./components/server";
+import {
+  returnData,
+  returnDate,
+  returnColor,
+} from "./components/getLocalStorageData";
 
 function App() {
   const [userDataInput, setUserDataInput] = useState();
@@ -10,11 +16,10 @@ function App() {
   const [dataData, setDataData] = useState(returnData());
   const [dataTime, setDataTime] = useState(returnDate());
   const [dailyData, setDailyData] = useState({
-    labels: [],
     datasets: [
       {
-        label: "Kg",
-        backgroundColor: "rgba(0, 0, 0, 0.75",
+        label: "",
+        backgroundColor: returnColor(),
         data: [],
       },
     ],
@@ -35,46 +40,100 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    if (!userTimeInputNow) {
+      alert("Pick a date.");
+      return;
+    }
+
+    if (dataTime[dataTime.length - 1] === userTimeInputNow) {
+      alert("The same date can't be entered.");
+      return;
+    }
+
+    const dateLater = (date) => {
+      if (date) {
+        date = date.split("/");
+        date[0] = date[0] * 400;
+        date[1] = date[1] * 32;
+        date = date[0] + date[1] + date[2];
+        return date;
+      }
+    };
+
+    if (
+      dateLater(dataTime[dataTime.length - 1]) > dateLater(userTimeInputNow)
+    ) {
+      alert("Previous date can't be entered.");
+      return;
+    }
+
     let dataDataCopy = [...dataData];
     dataDataCopy.push(userDataInput);
     const dataDataString = dataDataCopy.join(", ");
-    localStorage.setItem("weights", dataDataString);
+    localStorage.setItem("number", dataDataString);
     setDataData(dataDataCopy);
-
     let dataTimeCopy = [...dataTime];
+
     dataTimeCopy.push(userTimeInputNow);
+    setDataTime([...dataTimeCopy]);
+
     const dataTimeString = dataTimeCopy.join(", ");
     localStorage.setItem("date", dataTimeString);
-
-    setDataTime(dataTimeCopy);
   };
 
-  const handleChange = (date) => {
-    setUserTimeInput(date)
+  function formatDate(date) {
+    let month = "" + (date.getMonth() + 1);
+    let day = "" + date.getDate();
+    let year = date.getFullYear();
 
-    function formatDate(date) {
-      let month = "" + (date.getMonth() + 1);
-      let day = "" + date.getDate();
-      let year = date.getFullYear();
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
 
-      if (month.length < 2) month = "0" + month;
-      if (day.length < 2) day = "0" + day;
+    return [year, month, day].join("/");
+  }
 
-      return [year, month, day].join("/");
-    }
+  const handleDateChange = (date) => {
+    setUserTimeInput(date);
+
     date = formatDate(date);
     setUserTimeInputNow(date);
   };
 
+  const handleColorChange = (color) => {
+    setDailyData({
+      datasets: [
+        {
+          label: "",
+          backgroundColor: color.hex,
+          data: dailyData.datasets[0].data,
+        },
+      ],
+    });
+    localStorage.setItem("color", color.hex);
+  };
+
   return (
     <div className="App">
-      <Form
-        onDataChange={handleDataChange}
-        onSubmit={handleSubmit}
-        userTimeInput={userTimeInput}
-        onChange={handleChange}
-      />
+      <div className={styles.rules}>
+        Fill your data (e.x. weight) and pick a date. Chart will be saved in
+        your browser.
+      </div>
+      <div className={styles.formColorPickerWrapper}>
+        <Form
+          onDataChange={handleDataChange}
+          onSubmit={handleSubmit}
+          userTimeInput={userTimeInput}
+          onDateChange={handleDateChange}
+          color={dailyData.datasets[0].backgroundColor}
+        />
+        <div className={styles.pickColor}>You can pick a color:</div>
+        <GithubPicker
+          color={dailyData.datasets[0].backgroundColor}
+          onChangeComplete={handleColorChange}
+        />
+      </div>
+
       <Chart dailyData={dailyData} />
     </div>
   );

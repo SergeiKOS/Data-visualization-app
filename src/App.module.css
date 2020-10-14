@@ -1,0 +1,24 @@
+body {
+  font-family: "Commissioner", sans-serif;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+.rules {
+  margin-bottom: 16px;
+}
+
+.formColorPickerWrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.pickColor {
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 10px;
+  padding-top: 9px;
+}
