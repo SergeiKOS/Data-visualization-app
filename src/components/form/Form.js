@@ -15,7 +15,7 @@ function Form({ onDataChange, onSubmit, userTimeInput, onDateChange, color }) {
         required={true}
       />
       <PickDate userTimeInput={userTimeInput} onDateChange={onDateChange} />
-      <button className={styles.btn} style={{ border: "2px solid" + color }}>
+      <button className={styles.btn} style={{ border: "2px solid" + color }} type="submit">
         Enter
       </button>
     </form>
