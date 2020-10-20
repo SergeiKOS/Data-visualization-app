@@ -1,5 +1,6 @@
 body {
   font-family: "Commissioner", sans-serif;
+  min-width: 360px;
 }
 
 input,
