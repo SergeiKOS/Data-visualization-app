@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+import {customAlert, NotificationComponent} from './customNotification'
 
 import { GithubPicker } from "react-color";
 import Form from "./components/form/Form";
@@ -46,12 +47,12 @@ function App() {
     e.preventDefault();
 
     if (!userTimeInputNow) {
-      toast.info("Pick a date.");
+      customAlert("Pick a date.");
       return;
     }
 
     if (dataTime[dataTime.length - 1] === userTimeInputNow) {
-      toast.info("The same date can't be entered.");
+      customAlert("The same date can't be entered.");
       return;
     }
 
@@ -68,7 +69,7 @@ function App() {
     if (
       dateLater(dataTime[dataTime.length - 1]) > dateLater(userTimeInputNow)
     ) {
-      toast.info("Previous date can't be entered.");
+      customAlert("Previous date can't be entered.");
       return;
     }
 
@@ -140,7 +141,7 @@ function App() {
 
       <Chart dailyData={dailyData} />
 
-      <ToastContainer/>
+      <NotificationComponent/>
     </div>
   );
 }
