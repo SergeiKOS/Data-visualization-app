@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./App.module.css";
 
-import {customAlert, NotificationComponent} from './customNotification'
+import { customAlert, NotificationComponent } from "./customNotification";
 
 import { GithubPicker } from "react-color";
 import Form from "./components/form/Form";
@@ -130,16 +130,18 @@ function App() {
           onDateChange={handleDateChange}
           color={dailyData.datasets[0].backgroundColor}
         />
-        <div className={styles.pickColor}>You can pick a color:</div>
-        <GithubPicker
-          color={dailyData.datasets[0].backgroundColor}
-          onChangeComplete={handleColorChange}
-        />
+        <div>
+          <div className={styles.pickColor}>You can pick a color:</div>
+          <GithubPicker
+            color={dailyData.datasets[0].backgroundColor}
+            onChangeComplete={handleColorChange}
+          />
+        </div>
       </div>
 
       <Chart dailyData={dailyData} />
 
-      <NotificationComponent/>
+      <NotificationComponent />
     </div>
   );
 }

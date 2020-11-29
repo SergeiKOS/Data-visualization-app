@@ -15,11 +15,11 @@ button {
 .formColorPickerWrapper {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .pickColor {
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 10px;
-  padding-top: 9px;
 }
