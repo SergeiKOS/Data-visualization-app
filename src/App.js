@@ -11,6 +11,7 @@ import {
   returnDate,
   returnColor,
 } from "./components/getLocalStorageData";
+import ResetBtn from "./components/resetBtn/ResetBtn";
 
 function App() {
   const [userDataInput, setUserDataInput] = useState();
@@ -116,6 +117,15 @@ function App() {
     localStorage.setItem("color", color.hex);
   };
 
+  const handleReset = () => {
+    if (window.confirm("Are you sure you want to delete all your data?")) {
+      setDataData([]);
+      setDataTime([]);
+      localStorage.removeItem("date");
+      localStorage.removeItem("number");
+    }
+  };
+
   return (
     <div className="App">
       <div className={styles.rules}>
@@ -131,6 +141,7 @@ function App() {
           color={dailyData.datasets[0].backgroundColor}
         />
         <div>
+          <ResetBtn doReset={handleReset} />
           <div className={styles.pickColor}>You can pick a color:</div>
           <GithubPicker
             color={dailyData.datasets[0].backgroundColor}
