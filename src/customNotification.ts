@@ -1,7 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export const customAlert = (message) => {
+export const customAlert = (message:string) => {
   toast.warn(message); 
 } 
 

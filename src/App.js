@@ -29,6 +29,8 @@ function App() {
     ],
   });
 
+  console.dir(userTimeInput);
+
   useEffect(() => {
     const dailyDataCopy = { ...dailyData };
     const date = returnDate();
@@ -141,7 +143,7 @@ function App() {
           color={dailyData.datasets[0].backgroundColor}
         />
         <div>
-          <ResetBtn doReset={handleReset} />
+          <ResetBtn onReset={handleReset} />
           <div className={styles.pickColor}>You can pick a color:</div>
           <GithubPicker
             color={dailyData.datasets[0].backgroundColor}
