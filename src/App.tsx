@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// @ts-ignore
 import styles from "./App.module.css";
 
 import { customAlert, NotificationComponent } from "./customNotification";
@@ -14,12 +15,12 @@ import {
 import ResetBtn from "./components/resetBtn/ResetBtn";
 
 function App() {
-  const [userDataInput, setUserDataInput] = useState();
+  const [userDataInput, setUserDataInput] = useState<number | undefined>();
   const [userTimeInput, setUserTimeInput] = useState(new Date());
   const [userTimeInputNow, setUserTimeInputNow] = useState();
   const [dataData, setDataData] = useState(returnData());
   const [dataTime, setDataTime] = useState(returnDate());
-  const [dailyData, setDailyData] = useState({
+  const [dailyData, setDailyData] = useState<any>({
     datasets: [
       {
         label: "",
@@ -28,8 +29,6 @@ function App() {
       },
     ],
   });
-
-  console.dir(userTimeInput);
 
   useEffect(() => {
     const dailyDataCopy = { ...dailyData };
@@ -40,11 +39,11 @@ function App() {
     setDailyData(dailyDataCopy);
   }, [dataData]);
 
-  const handleDataChange = (e) => {
+  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserDataInput(+e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!userTimeInputNow) {
@@ -57,7 +56,7 @@ function App() {
       return;
     }
 
-    const dateLater = (date) => {
+    const dateLater = (date: any) => {
       if (date) {
         date = date.split("/");
         date[0] = date[0] * 400;
@@ -75,12 +74,14 @@ function App() {
     }
 
     let dataDataCopy = [...dataData];
+    // @ts-ignore
     dataDataCopy.push(userDataInput);
     const dataDataString = dataDataCopy.join(", ");
     localStorage.setItem("number", dataDataString);
     setDataData(dataDataCopy);
     let dataTimeCopy = [...dataTime];
 
+    // @ts-ignore
     dataTimeCopy.push(userTimeInputNow);
     setDataTime([...dataTimeCopy]);
 
@@ -88,7 +89,7 @@ function App() {
     localStorage.setItem("date", dataTimeString);
   };
 
-  function formatDate(date) {
+  function formatDate(date: any) {
     let month = "" + (date.getMonth() + 1);
     let day = "" + date.getDate();
     let year = date.getFullYear();
@@ -99,14 +100,14 @@ function App() {
     return [year, month, day].join("/");
   }
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (date: any) => {
     setUserTimeInput(date);
 
     date = formatDate(date);
     setUserTimeInputNow(date);
   };
 
-  const handleColorChange = (color) => {
+  const handleColorChange = (color: any) => {
     setDailyData({
       datasets: [
         {
