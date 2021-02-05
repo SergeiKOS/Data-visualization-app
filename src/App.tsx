@@ -37,7 +37,7 @@ function App() {
     dailyDataCopy.labels = date;
     dailyDataCopy.datasets[0].data = data;
     setDailyData(dailyDataCopy);
-  }, [dataData]);
+  }, [dataData]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserDataInput(+e.target.value);
