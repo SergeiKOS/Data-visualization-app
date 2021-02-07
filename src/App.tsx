@@ -39,11 +39,11 @@ function App() {
     setDailyData(dailyDataCopy);
   }, [dataData]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUserDataInput(+e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (!userTimeInputNow) {
@@ -56,7 +56,7 @@ function App() {
       return;
     }
 
-    const dateLater = (date: any) => {
+    const dateLater = (date: any): any => {
       if (date) {
         date = date.split("/");
         date[0] = date[0] * 400;
@@ -89,7 +89,7 @@ function App() {
     localStorage.setItem("date", dataTimeString);
   };
 
-  function formatDate(date: any) {
+  function formatDate(date: any): string {
     let month = "" + (date.getMonth() + 1);
     let day = "" + date.getDate();
     let year = date.getFullYear();
@@ -100,14 +100,14 @@ function App() {
     return [year, month, day].join("/");
   }
 
-  const handleDateChange = (date: any) => {
+  const handleDateChange = (date: any): void => {
     setUserTimeInput(date);
 
     date = formatDate(date);
     setUserTimeInputNow(date);
   };
 
-  const handleColorChange = (color: any) => {
+  const handleColorChange = (color: any): void => {
     setDailyData({
       datasets: [
         {
@@ -120,7 +120,7 @@ function App() {
     localStorage.setItem("color", color.hex);
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     if (window.confirm("Are you sure you want to delete all your data?")) {
       setDataData([]);
       setDataTime([]);
