@@ -8,7 +8,7 @@ import styles from "./DatePicker.module.css";
 function PickDate({ userTimeInput, onDateChange }: IDate) {
   return (
     <div>
-      Enter date:
+      <label htmlFor="date-picker">Enter date:</label>
       <DatePicker
         className={styles.input}
         selected={userTimeInput}
@@ -16,6 +16,7 @@ function PickDate({ userTimeInput, onDateChange }: IDate) {
         onChange={onDateChange}
         dateFormat="yyyy/MM/dd"
         required={true}
+        id="date-picker"
       />
     </div>
   );
