@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 // @ts-ignore
 import styles from "./App.module.css";
+// @ts-ignore
+import { ReactComponent as Logo } from "./logo.svg";
 
 import { customAlert, NotificationComponent } from "./customNotification";
 
@@ -134,6 +136,9 @@ function App() {
       <div className={styles.rules}>
         Graphics to track changes in data (weight, calories, height, etc). Chart
         will be saved in your browser.
+      </div>
+      <div className={styles.logoWrapper}>
+        <Logo />
       </div>
       <div className={styles.formColorPickerWrapper}>
         <Form

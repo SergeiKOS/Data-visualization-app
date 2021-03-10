@@ -8,8 +8,15 @@ button {
   font-family: inherit;
 }
 
+.logoWrapper {
+  position: absolute;
+  top: -5px;
+  right: 0;
+}
+
 .rules {
   margin-bottom: 16px;
+  width: 80%;
 }
 
 .formColorPickerWrapper {
