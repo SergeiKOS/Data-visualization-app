@@ -3,6 +3,7 @@
   font-family: "Commissioner";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local(""),
     url("fonts/commissioner-v5-latin-regular.woff2") format("woff2"),
     /* Chrome 26+, Opera 23+, Firefox 39+ */
