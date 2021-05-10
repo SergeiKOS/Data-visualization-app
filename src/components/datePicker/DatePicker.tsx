@@ -1,7 +1,9 @@
 import React from "react";
+
 import IDate from "./IDate.interface";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
 // @ts-ignore
 import styles from "./DatePicker.module.css";
 

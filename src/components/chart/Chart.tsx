@@ -1,6 +1,8 @@
 import React from "react";
+
 import IChart from "./IChart.interface";
 import { Line } from "react-chartjs-2";
+
 // @ts-ignore
 import styles from "./Chart.module.css";
 

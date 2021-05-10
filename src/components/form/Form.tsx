@@ -1,5 +1,7 @@
 import React from "react";
+
 import IForm from "./IForm.interface";
+
 // @ts-ignore
 import styles from "./Form.module.css";
 import PickDate from "../datePicker/DatePicker";

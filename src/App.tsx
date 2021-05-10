@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+
+import { GithubPicker } from "react-color";
+
 // @ts-ignore
 import styles from "./App.module.css";
 // @ts-ignore
 import { ReactComponent as Logo } from "./logo.svg";
-
 import { customAlert, NotificationComponent } from "./customNotification";
-
-import { GithubPicker } from "react-color";
 import Form from "./components/form/Form";
 import Chart from "./components/chart/Chart";
 import {

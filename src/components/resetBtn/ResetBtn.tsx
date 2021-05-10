@@ -1,5 +1,7 @@
 import React from "react";
+
 import IResetBtn from "./IResetBtn.interface";
+
 // @ts-ignore
 import styles from "./ResetBtn.module.css";
 
