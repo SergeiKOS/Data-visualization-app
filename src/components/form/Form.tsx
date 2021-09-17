@@ -19,6 +19,7 @@ function Form({
       <input
         className={styles.input}
         type="number"
+        step="any"
         id="data"
         onChange={onDataChange}
         required={true}
